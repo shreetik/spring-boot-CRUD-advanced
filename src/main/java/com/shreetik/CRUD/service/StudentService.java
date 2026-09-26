@@ -3,6 +3,7 @@ package com.shreetik.CRUD.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.shreetik.CRUD.entity.Student;
+import com.shreetik.CRUD.globalException.UserNotFoundException;
 import com.shreetik.CRUD.repository.StudentRepository;
 
 @Service 
@@ -24,7 +25,7 @@ public class StudentService {
     }
 
     public Student getById(Long id){
-        return this.studentRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found!!"));
+        return this.studentRepository.findById(id).orElseThrow(()-> new UserNotFoundException("User not found!!"));
     }
 
     public Student update(Long id,Student studentreq){
